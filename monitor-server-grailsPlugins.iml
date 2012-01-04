@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/hibernate-1.3.7">
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/hibernate-1.3.7/target/classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/hibernate-1.3.7/target/test-classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/hibernate-1.3.7/web-app/plugins" />
+    </content>
+    <content url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/tomcat-1.3.7">
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/tomcat-1.3.7/src/groovy" isTestSource="false" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/tomcat-1.3.7/target/classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/tomcat-1.3.7/target/test-classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/tomcat-1.3.7/web-app/plugins" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-1.3.7 (2)" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library name="Grails User Library (monitor-server-grailsPlugins)">
+        <CLASSES>
+          <root url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/tomcat-1.3.7/lib" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.jackson/jackson-mapper-asl/jars/jackson-mapper-asl-1.7.5.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.codehaus.jackson/jackson-core-asl/jars/jackson-core-asl-1.7.5.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.google.protobuf/protobuf-java/jars/protobuf-java-2.3.0.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.1.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/.grails/1.3.7/projects/monitor-server/plugins/tomcat-1.3.7/lib" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+
