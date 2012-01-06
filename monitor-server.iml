@@ -48,6 +48,15 @@
           <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.1.1.jar!/" />
           <root url="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.eclipse.jetty/jetty-continuation/jars/jetty-continuation-7.1.5.v20100705.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.eclipse.jetty/jetty-util/jars/jetty-util-7.1.5.v20100705.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.cometd.java/cometd-java-common/jars/cometd-java-common-2.0.0.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.cometd.java/bayeux-api/jars/bayeux-api-2.0.0.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.cometd.java/cometd-java-server/jars/cometd-java-server-2.0.0.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.eclipse.jetty/jetty-client/jars/jetty-client-7.1.5.v20100705.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.eclipse.jetty/jetty-http/jars/jetty-http-7.1.5.v20100705.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.eclipse.jetty/jetty-io/jars/jetty-io-7.1.5.v20100705.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.cometd.java/cometd-java-client/jars/cometd-java-client-2.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

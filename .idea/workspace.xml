@@ -76,16 +76,25 @@
       <file leaf-file-name="StatsService.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/services/monitor/server/StatsService.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="246" column="33" selection-start="9321" selection-end="9321" vertical-scroll-proportion="0.0">
+            <state line="262" column="30" selection-start="10066" selection-end="10066" vertical-scroll-proportion="-52.307693">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.gsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Config.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="0" selection-start="3053" selection-end="3053" vertical-scroll-proportion="0.6523179">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.gsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="44" selection-start="233" selection-end="233" vertical-scroll-proportion="0.1826087">
+            <state line="15" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="-9.375">
               <folding />
             </state>
           </provider>
@@ -94,7 +103,7 @@
       <file leaf-file-name="MeiController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/monitor/server/MeiController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="48" selection-start="458" selection-end="458" vertical-scroll-proportion="-11.086957">
+            <state line="7" column="0" selection-start="99" selection-end="99" vertical-scroll-proportion="-4.5652175">
               <folding />
             </state>
           </provider>
@@ -103,7 +112,7 @@
       <file leaf-file-name="mei-capacity.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/js/monitors/mei-capacity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="26" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+            <state line="114" column="35" selection-start="3378" selection-end="3378" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -125,10 +134,12 @@
         <option value="$PROJECT_DIR$/web-app/css/main.css" />
         <option value="$PROJECT_DIR$/src/java/StatsStorageItem.java" />
         <option value="$PROJECT_DIR$/src/java/StatStorageItem.java" />
-        <option value="$PROJECT_DIR$/web-app/js/monitors/mei-capacity.js" />
         <option value="$PROJECT_DIR$/grails-app/controllers/monitor/server/MeiController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/services/monitor/server/StatsService.groovy" />
+        <option value="$PROJECT_DIR$/web-app/WEB-INF/sitemesh.xml" />
         <option value="$PROJECT_DIR$/grails-app/views/index.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/services/monitor/server/StatsService.groovy" />
+        <option value="$PROJECT_DIR$/web-app/js/monitors/mei-capacity.js" />
+        <option value="$PROJECT_DIR$/grails-app/conf/Config.groovy" />
       </list>
     </option>
   </component>
@@ -167,7 +178,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Favorites" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -175,15 +188,9 @@
               <option name="myItemId" value="monitor-server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="monitor-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monitor-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -193,18 +200,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="monitor-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -218,7 +213,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -253,27 +266,95 @@
               <option name="myItemId" value="grails-app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monitor-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="editor.preferences.import" />
     <property name="recentsLimit" value="5" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
     <property name="options.splitter.details.proportions" value="0.35928145" />
     <property name="options.searchVisible" value="true" />
-    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -457,15 +538,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1626" height="1028" extended-state="0" />
+    <frame x="0" y="22" width="1627" height="1028" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52884614" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52834225" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32834226" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18809374" sideWeight="0.67094016" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -475,12 +557,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25126904" sideWeight="0.67094016" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32905984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21876982" sideWeight="0.67165774" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38247862" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -528,110 +609,117 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/monitor/server/StatStorageItem.java">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.cometd.java/cometd-java-server/jars/cometd-java-server-2.0.0.jar!/org/cometd/server/ServerChannelImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="21" selection-start="70" selection-end="70" vertical-scroll-proportion="0.049614113" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/js/monitors/mei-capacity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="26" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/monitor/server/MeiController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="48" selection-start="458" selection-end="458" vertical-scroll-proportion="-11.086957">
+        <state line="58" column="23" selection-start="2549" selection-end="2556" vertical-scroll-proportion="0.739229">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/raw/RiakResponse.class">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.cometd.java/cometd-java-server/jars/cometd-java-server-2.0.0.jar!/org/cometd/server/CometdServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="163" selection-end="163" vertical-scroll-proportion="-0.10452962">
+        <state line="5" column="13" selection-start="155" selection-end="155" vertical-scroll-proportion="0.06904488">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/raw/RawClient.class">
+    <entry file="file:///usr/local/Cellar/grails/1.3.7/libexec/src/java/org/codehaus/groovy/grails/web/sitemesh/GrailsLayoutDecoratorMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="167" selection-end="167" vertical-scroll-proportion="-0.26737967">
+        <state line="65" column="13" selection-start="2839" selection-end="2839" vertical-scroll-proportion="0.10078388">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/raw/pbc/PBClientAdapter.class">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.mortbay.jetty/jetty/jars/jetty-6.1.21.jar!/org/mortbay/jetty/webapp/webdefault.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="-0.5882353">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.612542">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/raw/http/HTTPClientAdapter.class">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="-0.42780748">
+        <state line="6" column="8" selection-start="287" selection-end="484" vertical-scroll-proportion="0.10204082">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/raw/http/ResultCapture.class">
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/spring/resources.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="168" selection-end="168" vertical-scroll-proportion="0.10452962">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/query/filter/AbstractKeyFilter.class">
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="181" selection-end="181" vertical-scroll-proportion="0.10452962">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/query/filter/EqualToFilter.class">
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="172" selection-end="172" vertical-scroll-proportion="0.10452962">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/client/DefaultRiakClient.class">
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="165" selection-end="165" vertical-scroll-proportion="-0.05226481">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/pbc/KeySource.class">
+    <entry file="file://$PROJECT_DIR$/web-app/WEB-INF/applicationContext.xml">
+      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="0.10452962">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/pbc/RiakClient.class">
+    <entry file="file://$PROJECT_DIR$/web-app/WEB-INF/sitemesh.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="156" selection-end="156" vertical-scroll-proportion="-1.5240642">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.basho.riak/riak-client/jars/riak-client-1.0.2.jar!/com/basho/riak/pbc/RiakStreamClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="15" selection-start="158" selection-end="158" vertical-scroll-proportion="0.10452962">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/services/monitor/server/StatsService.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="33" selection-start="9321" selection-end="9321" vertical-scroll-proportion="0.0">
+        <state line="23" column="24" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="44" selection-start="233" selection-end="233" vertical-scroll-proportion="0.1826087">
+        <state line="15" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="-9.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/monitors/mei-capacity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="35" selection-start="3378" selection-end="3378" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/monitor/server/MeiController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="99" selection-end="99" vertical-scroll-proportion="-4.5652175">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/monitor/server/StatsService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="262" column="30" selection-start="10066" selection-end="10066" vertical-scroll-proportion="-52.307693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="0" selection-start="3053" selection-end="3053" vertical-scroll-proportion="0.6523179">
           <folding />
         </state>
       </provider>
@@ -644,7 +732,7 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="-2086741096" />
-              <option name="pluginDependenciesCrc" value="274786490" />
+              <option name="pluginDependenciesCrc" value="-633072316" />
               <option name="properties">
                 <map>
                   <entry key="grails.project.class.dir" value="target/classes" />
