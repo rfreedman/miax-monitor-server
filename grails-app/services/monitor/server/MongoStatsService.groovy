@@ -199,6 +199,11 @@ class MongoStatsService implements InitializingBean {
         public def addSubscriber =  {
             def currentCount = subscriberCount.incrementAndGet().intValue()
             println("MeiCapacityPbublisher - new subscriber, count now ${currentCount}")
+
+            if(!publishing) {
+                println "MeiCapacityPublisher - got subscription, and not publishing yet, so starting to publish"
+                new Thread(this).start()
+            }
         }
 
         public def removeSubscriber = {
@@ -268,6 +273,11 @@ class MongoStatsService implements InitializingBean {
         public def addSubscriber =  {
             def currentCount = subscriberCount.incrementAndGet()
             println("MeiLatencyPublisher - new subscriber, count now ${currentCount}")
+
+            if(!publishing) {
+                println "MeiLatencyPublisher - got subscription, and not publishing yet, so starting to publish"
+                new Thread(this).start()
+            }
         }
 
         public def removeSubscriber = {
@@ -289,9 +299,7 @@ class MongoStatsService implements InitializingBean {
         }
 
         void publishRollup() {
-
             def rollUp = meiLatencyRollup()
-
             def jsonData = ["payload": ["rollup": rollUp]] as JSON
             def jsonString = jsonData.toString()
             bayeuxSession.getChannel('/rollups/mei-latency-by-cloud').publish(jsonString)
@@ -328,76 +336,36 @@ class MongoStatsService implements InitializingBean {
 
         boolean rcvMeta(ServerSession serverSession, Mutable meta) {
 
+            for(;;) {
+                if(meta.channel.toString().endsWith("/subscribe")) {
 
-            if(meta.channel.toString().endsWith("/subscribe")) {
-               //addSubscriber(meta.subscription, meta.clientId)
-
-               def publisher = publishers.get(meta.subscription)
-                /*
-               if(publisher && !publisher.publishing) {
-                   println "got subscription for ${meta.subscription}, and not publishing yet, so starting publisher"
-                   new Thread(publisher).start()
-               }
-               */
-               if(publisher) {
-                   publisher.addSubscriber()
-                   if(!publisher.publishing) {
-                        println "got subscription for ${meta.subscription}, and not publishing yet, so starting publisher"
-                        new Thread(publisher).start()
-                   }
-               }
-            }
-
-            if(meta.channel.toString().endsWith("/unsubscribe")) {
-               //removeSubscriber(meta.subscription, meta.clientId)
-               def publisher = publishers.get(meta.subscription)
-               if(publisher) {
-                   publisher.removeSubscriber()
-               }
-
-               /*
-               if(!hasSubscriptions(meta.subscription)) {
                    def publisher = publishers.get(meta.subscription)
-                   if(publisher && publisher.publishing) {
-                        println "last subsciber unsubscribed from ${meta.subscription}, so stopping publisher"
-                        publisher.stopPublishing()
-                   }
-               }
-               */
 
+                   if(publisher) {
+                       publisher.addSubscriber()
+                   } else {
+                       println "didn't find publisher for subscribe to ${meta.subscription}"
+                   }
+
+                   break;
+                }
+
+                if(meta.channel.toString().endsWith("/unsubscribe")) {
+                   def publisher = publishers.get(meta.subscription)
+                   if(publisher) {
+                       publisher.removeSubscriber()
+                   } else {
+                       println "didn't find publisher for unsubscribe from ${meta.subscription}"
+                   }
+
+                    break;
+                }
+
+                break;
             }
 
             return true
         }
-
-        /*
-        void addSubscriber(String channelName, String subscriberId) {
-            Set<String> subscriberSet = subscriptions.get(channelName)
-
-            if(subscriberSet == null) {
-                subscriberSet = new HashSet<String>();
-                subscriptions.put(channelName, subscriberSet);
-            }
-
-            subscriberSet.add(subscriberId);
-            println "added subscriber to ${channelName}: ${subscriberId}"
-        }
-
-        def removeSubscriber(String channelName, String subscriberId) {
-            Set<String> subscriberSet = subscriptions.get(channelName)
-            if(subscriberSet != null && subscriberSet.contains(subscriberId)) {
-               subscriberSet.remove(subscriberId);
-               println "removed subscriber from ${channelName}: ${subscriberId}"
-            } else {
-                println "failed to remove subscriber ${subscriberId} from ${channelName}. subscriberset = ${subscriberSet}"
-            }
-        }
-
-        def hasSubscriptions(String channelName) {
-           Set<String> subscriberSet = subscriptions.get(channelName)
-           return subscriberSet != null && subscriberSet.size() > 0
-        }
-        */
 
         boolean rcv(ServerSession serverSession, Mutable mutable) {
             return true
