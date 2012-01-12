@@ -16,7 +16,7 @@ import java.util.concurrent.Future
 import org.springframework.beans.factory.InitializingBean
 import grails.converters.JSON
 
-class StatsService implements InitializingBean {
+class RiakStatsService implements InitializingBean {
 
     static transactional = true
     private static final String CURRENT_STATS_BUCKET = "current_stats";

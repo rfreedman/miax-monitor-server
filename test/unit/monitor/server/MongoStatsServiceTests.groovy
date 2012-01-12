@@ -2,7 +2,7 @@ package monitor.server
 
 import grails.test.*
 
-class StatsServiceTests extends GrailsUnitTestCase {
+class MongoStatsServiceTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
     }

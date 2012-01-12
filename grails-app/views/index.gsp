@@ -1,15 +1,21 @@
 <html>
     <head>
-        <title>Miax Monitor Prototype</title>
         <meta name="layout" content="main" />
-        <g:javascript library="json2"/>
-        <g:javascript library="cometd"/>
-        <g:javascript library="jquery.cometd"/>
-        <g:javascript library="monitors/mei-capacity"/>
+        <title>Miax Monitor Prototype</title>
     </head>
     <body>
-        <h1>MEI Bulk Quote Capacity by Cloud</h1>
-        <div id="last-update"></div>
-        <table id="stats-grid"></table>
+        <h1>Miax Monitor Prototype</h1>
+        <div>
+            <a href="mei/bulk_quote_capacity_by_cloud" target="_blank">MEI Bulk Quote Capacity by Cloud (Table)</a>
+        </div>
+        <div>
+            <a href="mei/bulk_quote_capacity_graph" target="_blank">MEI Bulk Quote Capacity (Graph)</a>
+        </div>
+
+        <hr/>
+
+            <div>
+            <a href="mei/bulk_quote_latency_by_cloud" target="_blank">MEI Bulk Quote Latency by Cloud (Table)</a>
+        </div>
     </body>
 </html>

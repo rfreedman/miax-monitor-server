@@ -28,5 +28,6 @@ grails.project.dependency.resolution = {
 
         // runtime 'mysql:mysql-connector-java:5.1.13'
         runtime 'com.basho.riak:riak-client:1.0.2'
+        runtime 'com.gmongo:gmongo:0.9.2'
     }
 }

@@ -1,30 +1,15 @@
 (function($) {
     var aoColumns = [
         { "sTitle": "Cloud" },
-        { "sTitle": "100"},
-        { "sTitle": "200"},
-        { "sTitle": "300"},
-        { "sTitle": "400"},
-        { "sTitle": "500"},
-        { "sTitle": "600"},
-        { "sTitle": "700"},
-        { "sTitle": "800"},
-        { "sTitle": "900"},
-        { "sTitle": "1000"},
-        { "sTitle": "1100"},
-        { "sTitle": "1200"},
-        { "sTitle": "1300"},
-        { "sTitle": "1400"},
-        { "sTitle": "1500"},
-        { "sTitle": "1600"},
-        { "sTitle": "1700"},
-        { "sTitle": "1800"},
-        { "sTitle": "1900"},
-        { "sTitle": "2000"}
+        { "sTitle": "L1"},
+        { "sTitle": "L2"},
+        { "sTitle": "L3"},
+        { "sTitle": "L4"},
+        { "sTitle": "L5"}
     ];
 
     var oTable;
-    
+
     var cometd = $.cometd;
 
 
@@ -66,7 +51,7 @@
         if (handshake.successful === true) {
             //if(console) { console.log("handshake successful") }
             cometd.batch(function() {
-                cometd.subscribe('/rollups/mei-capacity-by-cloud', function(message) {
+                cometd.subscribe('/rollups/mei-latency-by-cloud', function(message) {
                     //if(console) { console.log("got message: " + message.data) }
                     // TODO: update the table
                     _updateStats(message.data)
@@ -93,7 +78,7 @@
 
         oTable = $("#stats-grid").dataTable({
             "aoColumns": aoColumns,
-            "sAjaxSource" : "mei/data",
+            "sAjaxSource" : "mei/latencyData",
             "bPaginate": false,
             "bLengthChange": false,
             "bFilter": false,
@@ -120,7 +105,7 @@
                             return "<div style='color:black'>" + num + "</div>";
                         }
                     },
-                    "aTargets": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+                    "aTargets": [1, 2, 3, 4, 5]
                 }
             ]
         });
@@ -141,5 +126,5 @@
         cometd.handshake();
 
     });
-    
+
 })(jQuery);
