@@ -12,6 +12,7 @@
 
     var cometd = $.cometd;
 
+    var subscription = null;
 
     function _connectionEstablished() {
         $('#body').append('<div>CometD Connection Established</div>');
@@ -51,7 +52,7 @@
         if (handshake.successful === true) {
             //if(console) { console.log("handshake successful") }
             cometd.batch(function() {
-                cometd.subscribe('/rollups/mei-latency-by-cloud', function(message) {
+                subscription = cometd.subscribe('/rollups/mei-latency-by-cloud', function(message) {
                     //if(console) { console.log("got message: " + message.data) }
                     // TODO: update the table
                     _updateStats(message.data)
@@ -72,6 +73,14 @@
         oTable.fnAddData(dataObj.payload.rollup)
         oTable.fnDraw()
         $("#last-update").text("Last Update: " + new Date());
+    }
+
+    function _unsubscribe() {
+       if(subscription != null) {
+            cometd.unsubscribe(subscription);
+            subscription = null;
+            cometd.disconnect(true);
+        }
     }
 
     $(document).ready(function() {
@@ -114,6 +123,10 @@
         // TODO: parameterize this
         var location = document.location;
         var cometURL = location.protocol + "//" + location.host + "/monitor-server" + "/cometd";
+
+        $(window).unload(function(){
+            _unsubscribe();
+        });
 
         cometd.configure({
             url: cometURL,

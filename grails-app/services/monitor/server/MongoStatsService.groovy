@@ -7,6 +7,11 @@ import com.mongodb.DB
 import com.mongodb.DBCollection
 import grails.converters.JSON
 import org.springframework.beans.factory.InitializingBean
+import org.cometd.bayeux.Channel
+import org.cometd.bayeux.server.BayeuxServer
+import org.cometd.bayeux.server.ServerSession
+import org.cometd.bayeux.server.ServerMessage.Mutable
+import java.util.concurrent.atomic.AtomicInteger
 
 class MongoStatsService implements InitializingBean {
 
@@ -17,11 +22,20 @@ class MongoStatsService implements InitializingBean {
     def bayeux
     def bayeuxSession
 
+    private HashMap<String, Runnable> publishers = new HashMap<String, Runnable>();
+    ///private HashMap<String, Set<String>> subscriptions = new HashMap<String, Set<String>>();
+
+
+
+
     void afterPropertiesSet() {
+
+        publishers.put("/rollups/mei-capacity-by-cloud",  new MeiCapacityPublisher())
+        publishers.put("/rollups/mei-latency-by-cloud",   new MeiLatencyPublisher())
+
+        bayeux.addExtension(new MetaListenerExtension());
         bayeuxSession = bayeux.newLocalSession()
         bayeuxSession.handshake()
-        new Thread(new MeiCapacityPublisher()).start()
-        new Thread(new MeiLatencyPublisher()).start()
     }
 
     def emptyMeiCapacityRollup = {
@@ -80,15 +94,12 @@ class MongoStatsService implements InitializingBean {
     }
 
     private Object getInitialValues(String appType, String statType) {
-        def retval = [:]
-
         DBCollection collection = db.getCollection("current_stats");
         def sampleStat = collection.findOne([type:appType, stat:statType]);
-        if(sampleStat != null) {
-            def stats = sampleStat.stats;
-            for(stat in stats) {
-                retval[stat.key] = 0
-            }
+        def stats = sampleStat.stats;
+        def retval = [:]
+        for(stat in stats) {
+            retval[stat.key] = 0
         }
         return retval
     }
@@ -182,6 +193,32 @@ class MongoStatsService implements InitializingBean {
 
     class MeiCapacityPublisher implements Runnable {
 
+        private shouldRun = false;
+        private AtomicInteger subscriberCount = new AtomicInteger(0);
+
+        public def addSubscriber =  {
+            def currentCount = subscriberCount.incrementAndGet().intValue()
+            println("MeiCapacityPbublisher - new subscriber, count now ${currentCount}")
+        }
+
+        public def removeSubscriber = {
+           def currentCount = subscriberCount.decrementAndGet().intValue()
+           println "MeiCapacityPublisher - subscriber removed, count now ${currentCount}"
+           if(currentCount < 1) {
+               subscriberCount.set(0)
+               shouldRun = false
+               println "MeiCapacityPublisher - last subscriber unsubscribed, so stopping"
+           }
+        }
+
+        public boolean isPublishing() {
+            return shouldRun
+        }
+
+        public void stopPublishing() {
+            shouldRun = false;
+        }
+
         void publishRollup() {
 
             def rollUp = meiCapacityRollup()
@@ -196,11 +233,12 @@ class MongoStatsService implements InitializingBean {
             //println "** published mei capacity rollup in ${duration} msec."
         }
 
-
         void run() {
             long lastPublished = 0;
             long lastDuration = 0;
-            while (true) {
+            shouldRun = true
+
+            while (shouldRun) {
                 try {
                     def age = new Date().getTime() - lastPublished
                     if (age >= 2000 - lastDuration) {
@@ -223,6 +261,32 @@ class MongoStatsService implements InitializingBean {
 
 
      class MeiLatencyPublisher implements Runnable {
+        private shouldRun = false;
+
+        private AtomicInteger subscriberCount = new AtomicInteger(0);
+
+        public def addSubscriber =  {
+            def currentCount = subscriberCount.incrementAndGet()
+            println("MeiLatencyPublisher - new subscriber, count now ${currentCount}")
+        }
+
+        public def removeSubscriber = {
+          def currentCount = subscriberCount.decrementAndGet()
+          println("MeiLatencyPublisher - removed subscriber, count now ${currentCount}")
+           if(currentCount < 1) {
+               subscriberCount.set(0)
+               shouldRun = false
+               println "MeiLatencyPublisher -  last subscriber unsubscribed, so stopping"
+           }
+        }
+
+        public boolean isPublishing() {
+            return shouldRun
+        }
+         
+        public void stopPublishing() {
+            shouldRun = false;
+        }
 
         void publishRollup() {
 
@@ -236,10 +300,13 @@ class MongoStatsService implements InitializingBean {
         void run() {
             long lastPublished = 0;
             long lastDuration = 0;
-            while (true) {
+
+            shouldRun = true;
+
+            while (shouldRun) {
                 try {
                     def age = new Date().getTime() - lastPublished
-                    if (age >= 1800 - lastDuration) {
+                    if (age >= 2000 - lastDuration) {
                         def before = new Date().getTime()
                         publishRollup();
                         lastPublished = new Date().getTime();
@@ -257,5 +324,89 @@ class MongoStatsService implements InitializingBean {
         }
     }
 
+    class MetaListenerExtension implements BayeuxServer.Extension {
 
+        boolean rcvMeta(ServerSession serverSession, Mutable meta) {
+
+
+            if(meta.channel.toString().endsWith("/subscribe")) {
+               //addSubscriber(meta.subscription, meta.clientId)
+
+               def publisher = publishers.get(meta.subscription)
+                /*
+               if(publisher && !publisher.publishing) {
+                   println "got subscription for ${meta.subscription}, and not publishing yet, so starting publisher"
+                   new Thread(publisher).start()
+               }
+               */
+               if(publisher) {
+                   publisher.addSubscriber()
+                   if(!publisher.publishing) {
+                        println "got subscription for ${meta.subscription}, and not publishing yet, so starting publisher"
+                        new Thread(publisher).start()
+                   }
+               }
+            }
+
+            if(meta.channel.toString().endsWith("/unsubscribe")) {
+               //removeSubscriber(meta.subscription, meta.clientId)
+               def publisher = publishers.get(meta.subscription)
+               if(publisher) {
+                   publisher.removeSubscriber()
+               }
+
+               /*
+               if(!hasSubscriptions(meta.subscription)) {
+                   def publisher = publishers.get(meta.subscription)
+                   if(publisher && publisher.publishing) {
+                        println "last subsciber unsubscribed from ${meta.subscription}, so stopping publisher"
+                        publisher.stopPublishing()
+                   }
+               }
+               */
+
+            }
+
+            return true
+        }
+
+        /*
+        void addSubscriber(String channelName, String subscriberId) {
+            Set<String> subscriberSet = subscriptions.get(channelName)
+
+            if(subscriberSet == null) {
+                subscriberSet = new HashSet<String>();
+                subscriptions.put(channelName, subscriberSet);
+            }
+
+            subscriberSet.add(subscriberId);
+            println "added subscriber to ${channelName}: ${subscriberId}"
+        }
+
+        def removeSubscriber(String channelName, String subscriberId) {
+            Set<String> subscriberSet = subscriptions.get(channelName)
+            if(subscriberSet != null && subscriberSet.contains(subscriberId)) {
+               subscriberSet.remove(subscriberId);
+               println "removed subscriber from ${channelName}: ${subscriberId}"
+            } else {
+                println "failed to remove subscriber ${subscriberId} from ${channelName}. subscriberset = ${subscriberSet}"
+            }
+        }
+
+        def hasSubscriptions(String channelName) {
+           Set<String> subscriberSet = subscriptions.get(channelName)
+           return subscriberSet != null && subscriberSet.size() > 0
+        }
+        */
+
+        boolean rcv(ServerSession serverSession, Mutable mutable) {
+            return true
+        }
+        boolean send(ServerSession serverSession, ServerSession serverSession1, Mutable mutable) {
+            return true
+        }
+        boolean sendMeta(ServerSession serverSession, Mutable mutable) {
+            return true
+        }
+    }
 }

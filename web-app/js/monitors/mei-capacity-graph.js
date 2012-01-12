@@ -2,6 +2,8 @@
 
     var cometd = null;
     var _connected = false;
+    
+    var subscription = null;
 
     var plot;
     var data = [[new Date().getTime(), 0]];
@@ -51,7 +53,7 @@
         if (handshake.successful === true) {
             //if(console) { console.log("handshake successful") }
             cometd.batch(function() {
-                cometd.subscribe('/rollups/mei-capacity-by-cloud', function(message) {
+                subscription = cometd.subscribe('/rollups/mei-capacity-by-cloud', function(message) {
                     //if(console) { console.log("got message: " + message.data) }
                     // TODO: update the table
                     _updateStats(message.data)
@@ -128,6 +130,14 @@
         setTimeout(update, updateInterval);
     }
 
+    function _unsubscribe() {
+       if(subscription != null) {
+            cometd.unsubscribe(subscription);
+            subscription = null;
+            cometd.disconnect(true);
+        }
+    }
+
     // ===========================================================================
 
 
@@ -142,6 +152,10 @@
         var cometURL = location.protocol + "//" + location.host + "/monitor-server" + "/cometd";
 
         cometd = $.cometd;
+
+        $(window).unload(function(){
+            _unsubscribe();
+        });
         
         cometd.configure({
             url: cometURL,

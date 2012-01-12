@@ -4,4 +4,6 @@ out
 .DS_Store
 *.log
 *.iml
+*.ipr
+*.iws
 
