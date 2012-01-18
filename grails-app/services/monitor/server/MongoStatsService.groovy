@@ -33,6 +33,14 @@ class MongoStatsService implements InitializingBean {
         publisher = new StatPublisher("/rollups/mei-latency-by-cloud", "MeiLatencyPublisher", meiLatencyRollup)
         publishers.put(publisher.channelName, publisher)
 
+
+        int extraQueryCount = 20;
+        for(int i = 0; i < extraQueryCount; i++) {
+           StatPublisher pub = new StatPublisher("/rollups/mei-capacity-by-cloud-" + (i+1), "MeiCapacityPublisher" + (i+1), meiCapacityRollup)
+           publishers.put(pub.channelName, pub)
+        }
+
+
         bayeux.addExtension(new MetaListenerExtension());
         bayeuxSession = bayeux.newLocalSession()
         bayeuxSession.handshake()

@@ -67,11 +67,20 @@
         if (handshake.successful === true) {
             //if(console) { console.log("handshake successful") }
             cometd.batch(function() {
-                subscription = cometd.subscribe('/rollups/mei-capacity-by-cloud', function(message) {
+                subscription = cometd.subscribe('/rollups/mei-capacity-by-cloud-1', function(message) {
                     //if(console) { console.log("got message: " + message.data) }
                     // TODO: update the table
                     _updateStats(message.data)
                 });
+
+
+                for(var i = 2; i <= 20; i++) {
+                    cometd.subscribe('/rollups/mei-capacity-by-cloud-'+i, function(message) {
+                        console.log("got stats from mei-capacity-by-cloud-" + i);
+                    });
+                }
+
+
 
             });
         } else {
