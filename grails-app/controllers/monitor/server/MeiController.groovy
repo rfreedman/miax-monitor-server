@@ -4,7 +4,7 @@ import grails.converters.JSON
 
 class MeiController {
 
-    def mongoStatsService
+    def rdbStatsService
 
     def index = {
     }
@@ -22,7 +22,7 @@ class MeiController {
     def data = {
 
         def data = [
-                aaData: mongoStatsService.emptyMeiCapacityRollup()
+                aaData: rdbStatsService.emptyMeiCapacityRollup()
         ]
 
         render data as JSON
@@ -30,7 +30,7 @@ class MeiController {
 
     def latencyData = {
         def data = [
-                aaData: mongoStatsService.emptyMeiLatencyRollup()
+                aaData: rdbStatsService.emptyMeiLatencyRollup()
         ]
 
         render data as JSON

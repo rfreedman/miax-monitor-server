@@ -1,8 +1,17 @@
 dataSource {
     pooled = true
-    driverClassName = "org.hsqldb.jdbcDriver"
-    username = "sa"
-    password = ""
+    driverClassName = "org.gjt.mm.mysql.Driver"
+    username = "miax"
+    password = "miax"
+
+
+    /*
+                DriverAdapterCPDS cpds = new DriverAdapterCPDS();
+            cpds.setDriver("org.gjt.mm.mysql.Driver");
+            cpds.setUrl("jdbc:mysql://localhost:3306/miax");
+            cpds.setUser("miax");
+            cpds.setPassword("miax");
+     */
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -13,20 +22,18 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-            url = "jdbc:hsqldb:mem:devDB"
+            url = "jdbc:mysql://localhost:3306/miax"
         }
     }
     test {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:hsqldb:mem:testDb"
-        }
+            url = "jdbc:mysql://localhost:3306/miax"
+         }
     }
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+            url = "jdbc:mysql://localhost:3306/miax"
         }
     }
 }

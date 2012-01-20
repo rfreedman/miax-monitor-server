@@ -74,7 +74,7 @@
                 });
 
 
-                for(var i = 2; i <= 20; i++) {
+                for(var i = 2; i <= 200; i++) {
                     cometd.subscribe('/rollups/mei-capacity-by-cloud-'+i, function(message) {
                         console.log("got stats from mei-capacity-by-cloud-" + i);
                     });
