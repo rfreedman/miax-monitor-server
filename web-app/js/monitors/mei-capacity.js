@@ -64,6 +64,14 @@
     // Function invoked when first contacting the server and
     // when the server has lost the state of this client
     function _metaHandshake(handshake) {
+
+        var helper = function(i) {
+            return function(message) {
+               console.log("got stats from mei-capacity-by-cloud-" + i);
+            }
+        }
+
+
         if (handshake.successful === true) {
             //if(console) { console.log("handshake successful") }
             cometd.batch(function() {
@@ -74,10 +82,8 @@
                 });
 
 
-                for(var i = 2; i <= 200; i++) {
-                    cometd.subscribe('/rollups/mei-capacity-by-cloud-'+i, function(message) {
-                        console.log("got stats from mei-capacity-by-cloud-" + i);
-                    });
+                for(var i = 2; i <= 500; i++) {
+                    cometd.subscribe('/rollups/mei-capacity-by-cloud-'+i, helper(i));
                 }
 
 

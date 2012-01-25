@@ -1,8 +1,8 @@
 dataSource {
     pooled = true
     driverClassName = "org.gjt.mm.mysql.Driver"
-    username = "miax"
-    password = "miax"
+    username = "rfreedman"
+    //password = "welcome1"
 
 
     /*
@@ -22,7 +22,8 @@ hibernate {
 environments {
     development {
         dataSource {
-            url = "jdbc:mysql://localhost:3306/miax"
+            //url = "jdbc:mysql://dpr1d1bps08:3306/user"
+            url = "jdbc:mysql://dpr1d1ods06:3306/test"
         }
     }
     test {

@@ -7,6 +7,8 @@ import org.cometd.bayeux.server.ServerMessage.Mutable
 import org.cometd.bayeux.server.ServerSession
 import org.springframework.beans.factory.InitializingBean
 import groovy.sql.GroovyRowResult
+import java.util.concurrent.ScheduledThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 
 class RdbStatsService implements InitializingBean {
 
@@ -16,6 +18,7 @@ class RdbStatsService implements InitializingBean {
     def bayeuxSession
 
     private HashMap<String, Runnable> publishers = new HashMap<String, Runnable>();
+    private ScheduledThreadPoolExecutor scheduler = new ScheduledThreadPoolExecutor(50);
 
     void afterPropertiesSet() {
         // TODO: generate publishers based on configuration
@@ -27,7 +30,7 @@ class RdbStatsService implements InitializingBean {
         publishers.put(publisher.channelName, publisher)
 
 
-        int extraQueryCount = 200;
+        int extraQueryCount = 1000;
         for (int i = 0; i < extraQueryCount; i++) {
             StatPublisher pub = new StatPublisher("/rollups/mei-capacity-by-cloud-" + (i + 1), "MeiCapacityPublisher" + (i + 1), meiCapacityRollup)
             publishers.put(pub.channelName, pub)
@@ -174,6 +177,8 @@ class RdbStatsService implements InitializingBean {
         private Closure statClosure;
         private shouldRun = false;
 
+        private def future = null;
+
         public StatPublisher(String channelName, String description, Closure statClosure) {
             this.channelName = channelName
             this.description = description
@@ -187,7 +192,8 @@ class RdbStatsService implements InitializingBean {
         public def ensurePublishing = {
             if (!publishing) {
                 println "${description} - got subscription, and not publishing yet, so starting to publish"
-                new Thread(this).start()
+                //new Thread(this).start()
+               future =  scheduler.scheduleAtFixedRate(this, 100, 2000, TimeUnit.MILLISECONDS)
             }
         }
 
@@ -197,6 +203,10 @@ class RdbStatsService implements InitializingBean {
 
         public void stopPublishing() {
             shouldRun = false;
+            if(future != null) {
+                future.cancel(false);
+                future = null;
+            }
         }
 
         private def hasSubscribers = {
@@ -227,28 +237,28 @@ class RdbStatsService implements InitializingBean {
         }
 
         void run() {
-            long lastPublished = 0;
-            long lastDuration = 0;
+            //long lastPublished = 0;
+           // long lastDuration = 0;
             shouldRun = true
 
-            while (shouldRun) {
+           // while (shouldRun) {
                 try {
-                    def age = new Date().getTime() - lastPublished
-                    if (age >= 2000 - lastDuration) { // throttle publishing speed
+                    //def age = new Date().getTime() - lastPublished
+                    //if (age >= 2000 - lastDuration) { // throttle publishing speed
                         def before = new Date().getTime()
                         publishRollup();
-                        lastPublished = new Date().getTime();
+                        //lastPublished = new Date().getTime();
                         def after = new Date().getTime()
                         def duration = after - before
-                        lastDuration = duration
+                        //lastDuration = duration
                         println "${description}: published in ${duration} msec."
-                    } else {
-                        Thread.sleep(100);
-                    }
+                   // } else {
+                   //     Thread.sleep(100);
+                  //  }
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-            }
+           // }
         }
 
     }
